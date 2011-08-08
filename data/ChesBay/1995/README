@@ -1,0 +1,44 @@
+Hi Bill --  Here is a sample vis5D file using the Chesaepake Bay numerical
+model with the included topography file.
+
+
+FILES:
+--------------------
+cbt.v5d.Z  :  the compressed vis5d file.  
+
+uncompress like
+	uncompress cbt.v5d.Z
+
+the variables are velocity (U,V,W), salinity and kinetic energy.  there are
+60 grid files, each file has a volume of each variable;  ie: grid file 1
+has a datavolume 75x179x13 of U, the same size datavolume for v, w,
+salinity and KE.
+
+CB.TOPO  : the topography file for the Ches. Bay used in the numerical
+model.  
+
+
+NON-CAVE  USAGE:
+--------------------
+
+1. call vis5d like 
+		vis5d cbt.v5d -topo CB.TOPO
+
+then select TOPO and PERSPECTIVE for the full effect.
+
+
+2.  start with a horizontal slice of salinity near the surface.  use
+the SLICE option and the right mouse button to grab the edge of the
+salinity slice and move it up.  use the arrow keys with the cursor in
+the colorbar which will appear to adjust the colors for better
+contrast.
+
+3.  add a horizontal salinity contour slice just above the salinity color
+slice.  change the contour interval to 1.0
+
+4.  select HWIND-1 and move the slice up to just above the preceeding
+two slices.  change the density to .5 and the scale to 50 -- this is done
+in the small window that pops up when you click the HWIND-1 button.
+
+5.  select ANIMATE and enjoy the show.  disregard the spurious velocity
+vectors seen near the offshore boundary -- i'm working on the fix to that.

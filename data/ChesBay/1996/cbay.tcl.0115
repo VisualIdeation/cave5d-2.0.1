@@ -1,0 +1,167 @@
+###############################################################################
+#
+#  Vis5D configuration
+#
+###############################################################################
+
+#
+# Display context stuff
+#
+
+set idisp_ctx 0 ; # Display context index (Cave5D has only one)
+
+# Load all of the data files first:
+#                              MBS FILE                 LABEL
+#vis5d_load_v5dfile $idisp_ctx 200 data/vis5d/LAMPS.v5d DataContext0
+
+vis5d_load_v5dfile $idisp_ctx 500 CBay_b.v5d DataContext0
+
+vis5d_init_path $idisp_ctx .
+vis5d_init_map $idisp_ctx OUTLUSAM
+set hires 0
+vis5d_init_topo $idisp_ctx CB.TOPO $hires
+#vis5d_set_topo_hires_maxverts $idisp_ctx 100000
+#vis5d_init_texture $idisp_ctx data/camx_LA_xxx.rgb
+
+# Get the data context grid dimensions.  Note that the display context
+# grid dimensions will be the same as those of the first data context.
+
+set nrows [ vis5d_get_dtx_grid_rows $idisp_ctx ]
+set ncols [ vis5d_get_dtx_grid_columns $idisp_ctx ]
+set nlevs [ vis5d_get_dtx_grid_levels $idisp_ctx ]
+set r_min 0
+set r_max [ expr $nrows - 1.0 ]
+set r_mid [ expr $r_max / 2.0 ]
+set c_min 0
+set c_max [ expr $ncols - 1.0 ]
+set c_mid [ expr $c_max / 2.0 ]
+set l_min 0
+set l_max [ expr $nlevs - 1.0 ]
+set l_mid [ expr $l_max / 2.0 ]
+
+
+vis5d_set_color $idisp_ctx VIS5D_BOX 0 1.0 1.0 1.0 1.0
+
+vis5d_graphics_mode $idisp_ctx VIS5D_TOPO VIS5D_ON
+
+vis5d_set_topo_base $idisp_ctx 1 -3.0
+#vis5d_set_vert_exaggeration $idisp_ctx 30
+
+
+#
+# Data context object stuff
+#
+# The default state of data context objects is "off".  If an object's
+# initial state is to be "on", an "enable_graphics" command is needed:
+#
+#     vis5d_enable_graphics $idata_ctx VIS5D_ISOSURF S VIS5D_ON
+#
+
+set idata_ctx 0 ; # Data context index (Cave5D may have more than one)
+
+# Wind Objects
+# Note that wind objects are tied to the _display_ context.
+
+vis5d_set_wind_vars_and_owners $idisp_ctx				\
+	$idata_ctx U $idata_ctx V $idata_ctx W				\
+	$idata_ctx U $idata_ctx V $idata_ctx W				\
+	$idata_ctx U $idata_ctx V $idata_ctx W
+
+vis5d_set_hwindslice $idisp_ctx 0 0.5 20.0 $l_max
+vis5d_set_color $idisp_ctx VIS5D_HWIND 0 1.0 1.0 1.0 1.0
+
+vis5d_set_vwindslice $idisp_ctx 0 1.0 20.0 $r_max 22.18 14.2 $c_max
+vis5d_set_color $idisp_ctx VIS5D_VWIND 0 0.0 1.0 1.0 1.0
+
+#set lev [ expr ($l_mid + $l_min) / 2.0 ]
+#vis5d_set_hstreamslice $idisp_ctx 0 1.0 $lev
+
+# Isosurfaces
+
+vis5d_set_isosurface $idata_ctx FISH 3.0
+vis5d_set_color $idata_ctx VIS5D_ISOSURF FISH 1.0 1.0 0.0 1.0
+
+vis5d_set_isosurface $idata_ctx SAL -4.0
+vis5d_set_color $idata_ctx VIS5D_ISOSURF SAL 1.0 0.5 1.0 1.0
+
+# Colored slices
+
+#set lev [ expr ($l_max + $l_mid) / 2.0 ]
+#vis5d_set_chslice $idata_ctx T $lev
+
+#set lev [ expr ($l_min + $l_mid) / 2.0 ]
+#vis5d_make_clone_variable $idata_ctx T2 T
+#vis5d_set_chslice $idata_ctx T2 $lev
+
+#vis5d_set_chslice $idata_ctx SPD $l_mid
+#vis5d_enable_graphics $idata_ctx VIS5D_CHSLICE SPD VIS5D_ON
+
+#vis5d_set_cvslice $idata_ctx SPD $r_min $c_mid $r_max $c_mid
+
+# Contoured slices
+
+vis5d_set_hslice $idata_ctx SAL 1.0 -35.0 3.0 $l_max
+vis5d_set_color $idata_ctx VIS5D_HSLICE SAL 1.0 0.5 1.0 1.0
+
+vis5d_set_vslice $idata_ctx SAL 0.5 -35.0 3.0 $r_mid 0 $r_mid $c_max
+vis5d_set_color $idata_ctx VIS5D_VSLICE SAL 1.0 0.5 1.0 1.0
+
+# Volume visualizations
+#
+# Note that only one volume is visible at a time.  Therefore, a volume
+# needs to be "set" (vis5d_set_volume_and_owner $idisp_ctx $idata_ctx var)
+# only if it is to be displayed at startup.  Otherwise, the volume
+# is "set" when it is selected through the UI.
+
+#vis5d_set_volume_and_owner $idisp_ctx $idata_ctx SPD
+#vis5d_set_volume_dims $idisp_ctx -100000 -1 -1
+
+
+
+###############################################################################
+#
+# Cave5D configuration
+#
+###############################################################################
+
+# Check to see if this script is running with Cave5D.  This check allows
+# the same configuration script to be used with Vis5D as well as Cave5D.
+
+if { [ info commands cave5d* ] == "" } { return }
+
+
+#
+# Set Cave5D options
+#
+
+cave5d_parm_set CLOCK_MODE		VIS5D
+cave5d_parm_set CLOCK_POSITION		-4.0 9.0 -5.0   -3.25 8.25 -5.0
+cave5d_parm_set ALL_PANELS_CONFIG	../config/panel.mini
+cave5d_parm_set INIT_POSITION 		0.0	5.0	-5.0
+cave5d_parm_set INIT_ROTATION		0.0	0.0	0.0
+cave5d_parm_set INIT_SCALE		4.5	4.5	4.5
+cave5d_parm_set NAV_SPEED		1.0
+cave5d_parm_set CHANGE_SCALE_FACTOR	1.0
+cave5d_parm_set TARGET_RATE		3.0
+
+#
+# Specify user interface menu items
+#
+
+# Syntax when there is only one data context:
+#                 MENU LABEL         OBJECT_TYPE   VAR
+#cave5d_menu_item GOBJ "Isosurf - SPD" VIS5D_ISOSURF SPD
+#
+# Syntax when there are more than one data contexts:
+#                 MENU LABEL         OBJECT_TYPE   VAR.CTX
+#cave5d_menu_item GOBJ "SPD Isosurf" VIS5D_ISOSURF SPD.1
+
+cave5d_menu_item GOBJ "Topography" VIS5D_TOPO 0
+#cave5d_menu_item GOBJ "Map Vectors" VIS5D_MAP 0
+cave5d_menu_item GOBJ "H_Slice - Currents" VIS5D_HWIND 0
+cave5d_menu_item GOBJ "V_Slice - Currents" VIS5D_VWIND 0
+cave5d_menu_item GOBJ "H_Contours - SAL" VIS5D_HSLICE SAL
+cave5d_menu_item GOBJ "V_Contours - SAL" VIS5D_VSLICE SAL
+cave5d_menu_item GOBJ "Isosurf - SAL" VIS5D_ISOSURF SAL
+cave5d_menu_item GOBJ "Isosurf - FISH" VIS5D_ISOSURF FISH
+#cave5d_menu_item GOBJ "VolViz - SPD" VIS5D_VOLUME SPD

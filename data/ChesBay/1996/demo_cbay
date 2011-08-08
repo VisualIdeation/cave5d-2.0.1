@@ -1,0 +1,4 @@
+dir=`dirname $0`
+if [[ $dir != "" ]] ; then cd $dir ; fi
+
+cave5d cbay.tcl

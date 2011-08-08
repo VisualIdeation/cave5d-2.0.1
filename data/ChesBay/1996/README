@@ -1,0 +1,33 @@
+This tarfile contains the following files:
+
+        README          
+        configfile    :  for the application 
+        Makefile       
+        CB.TOPO       : Topographic file of the Bay (Vis5D form)
+        CBay.v5d.Z    : Vis5D file from numerical model output 
+        CBay.v5d.SAVE : Sets up colors.
+        ccpo.aud      : VSS audio config file [not used now] 
+        src directory for cave5d
+
+1.  You need to uncompress CBay.v5d.Z.
+2.  Edit src/vis5d.h to reflect the memory you have available
+	on the graphics machine (512Mb would be optimum for this
+	application; if you have less, you may run out of memory).
+3.  Make the app with the 'make debug' command.
+4.  Run the app with the 'cave5d configfile' command.
+5.  Standard CAVE wand navigation applies.  
+6.  When the app comes up, the control panel should be used
+	to start action.  Select a Mode (try 2)  and then animate.
+
+
+
+/*--------------------------------------------------------------*/
+/*Glen H. Wheless                          804-683-5556 (W)     */
+/*Research Asst. Professor                 804-683-5550 (fax)   */
+/*Center for Coastal Physical Oceanography                      */
+/*768 52nd. St.                                                 */ 
+/*Old Dominion University   email:   wheless@ccpo.odu.edu       */  
+/*Norfolk, VA 23529     URL:  http://www.ccpo.odu.edu/~wheless  */
+/*--------------------------------------------------------------*/
+
+

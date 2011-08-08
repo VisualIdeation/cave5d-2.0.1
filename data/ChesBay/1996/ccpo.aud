@@ -1,0 +1,31 @@
+// have server echo messages
+
+   A_SetPrintCommands, "F", 1;
+
+// Create two message groups
+
+  WJunk = A_Create, "F", FmActor; 
+
+// Set up the actors
+
+   A_UseFreqForPitchNum, "F", WJunk; 
+
+/* fm_note =   A_BeginNote, "FFFFF", WJunk, 440, 0.3, 0, 1;  */
+
+start      = A_Create "F" MessageGroup;
+stop       = A_Create "F" MessageGroup;
+tweakPitch = A_Create "F" MessageGroup;
+tweakAmpl = A_Create "F" MessageGroup;
+
+addActor = A_Create "F" AdditiveActor;
+A_UseFreqForPitchNum "F" addActor;
+note = A_BeginNote, "FIAIA", addActor, [3]={3400, 3500, 3600}, [3]={.2, .2, .3};
+
+A_AddMessage "FFFIVIV" start addActor A_BeginNote 3. 0. 3. 0. ;
+ 
+A_AddMessage "FFF" stop addActor A_EndAllNotes;
+
+A_AddMessage "FFMFIV" tweakPitch addActor A_SetSomePitchNums note 6 0;
+A_AddMessage "FFMFIV" tweakAmpl  addActor A_SetAllAmpls      note 3 0;
+
+
