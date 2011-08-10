@@ -1,35 +1,42 @@
-cave5d-vrlib.o cave5d-vrlib.o: vrlib.c include/vrlib.h \
-  /usr/include/unistd.h /usr/include/features.h /usr/include/sys/cdefs.h \
-  /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
-  /usr/include/gnu/stubs-64.h /usr/include/bits/posix_opt.h \
-  /usr/include/bits/types.h \
-  /usr/lib/gcc/x86_64-redhat-linux/4.1.2/include/stddef.h \
-  /usr/include/bits/typesizes.h /usr/include/bits/confname.h \
-  /usr/include/getopt.h /opt/local/FreeVR/merge/freevr.h \
-  /opt/local/FreeVR/merge/vr_config.h /usr/include/stdio.h \
-  /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
-  /usr/include/bits/wchar.h /usr/include/gconv.h \
-  /usr/lib/gcc/x86_64-redhat-linux/4.1.2/include/stdarg.h \
-  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
-  /usr/include/bits/stdio.h /opt/local/FreeVR/merge/vr_system.h \
-  /opt/local/FreeVR/merge/vr_context.h /opt/local/FreeVR/merge/vr_shmem.h \
-  /usr/include/stdlib.h /usr/include/sys/types.h /usr/include/time.h \
-  /usr/include/endian.h /usr/include/bits/endian.h \
-  /usr/include/sys/select.h /usr/include/bits/select.h \
-  /usr/include/bits/sigset.h /usr/include/bits/time.h \
-  /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h \
-  /usr/include/alloca.h /opt/local/FreeVR/merge/vr_enums.h \
-  /opt/local/FreeVR/merge/vr_math.h /opt/local/FreeVR/merge/vr_visren.h \
-  /opt/local/FreeVR/merge/vr_callback.h \
-  /opt/local/FreeVR/merge/vr_procs.h /opt/local/FreeVR/merge/vr_input.h \
-  /opt/local/FreeVR/merge/vr_entity.h /opt/local/FreeVR/merge/vr_debug.h \
-  /opt/local/FreeVR/merge/vr_utils.h
+cave5d-vrlib.o: vrlib.c include/vrlib.h /usr/include/unistd.h \
+ /usr/include/features.h /usr/include/bits/predefs.h \
+ /usr/include/sys/cdefs.h /usr/include/bits/wordsize.h \
+ /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
+ /usr/include/bits/posix_opt.h /usr/include/bits/types.h \
+ /usr/include/bits/typesizes.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h \
+ /usr/include/bits/confname.h /usr/include/getopt.h \
+ /usr/include/bits/unistd.h /opt/local/include/FreeVR/freevr.h \
+ /opt/local/include/FreeVR/vr_config.h /usr/include/stdio.h \
+ /usr/include/libio.h /usr/include/_G_config.h /usr/include/wchar.h \
+ /usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stdarg.h \
+ /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
+ /usr/include/bits/stdio.h /usr/include/bits/stdio2.h \
+ /opt/local/include/FreeVR/vr_system.h \
+ /opt/local/include/FreeVR/vr_context.h \
+ /opt/local/include/FreeVR/vr_shmem.h /usr/include/stdlib.h \
+ /usr/include/sys/types.h /usr/include/time.h /usr/include/endian.h \
+ /usr/include/bits/endian.h /usr/include/bits/byteswap.h \
+ /usr/include/sys/select.h /usr/include/bits/select.h \
+ /usr/include/bits/sigset.h /usr/include/bits/time.h \
+ /usr/include/sys/sysmacros.h /usr/include/bits/pthreadtypes.h \
+ /usr/include/alloca.h /usr/include/bits/stdlib.h \
+ /opt/local/include/FreeVR/vr_enums.h /opt/local/include/FreeVR/vr_math.h \
+ /opt/local/include/FreeVR/vr_visren.h \
+ /opt/local/include/FreeVR/vr_callback.h \
+ /opt/local/include/FreeVR/vr_procs.h \
+ /opt/local/include/FreeVR/vr_input.h \
+ /opt/local/include/FreeVR/vr_entity.h \
+ /opt/local/include/FreeVR/vr_debug.h \
+ /opt/local/include/FreeVR/vr_utils.h
 
 include/vrlib.h:
 
 /usr/include/unistd.h:
 
 /usr/include/features.h:
+
+/usr/include/bits/predefs.h:
 
 /usr/include/sys/cdefs.h:
 
@@ -43,17 +50,19 @@ include/vrlib.h:
 
 /usr/include/bits/types.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/4.1.2/include/stddef.h:
-
 /usr/include/bits/typesizes.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stddef.h:
 
 /usr/include/bits/confname.h:
 
 /usr/include/getopt.h:
 
-/opt/local/FreeVR/merge/freevr.h:
+/usr/include/bits/unistd.h:
 
-/opt/local/FreeVR/merge/vr_config.h:
+/opt/local/include/FreeVR/freevr.h:
+
+/opt/local/include/FreeVR/vr_config.h:
 
 /usr/include/stdio.h:
 
@@ -63,11 +72,7 @@ include/vrlib.h:
 
 /usr/include/wchar.h:
 
-/usr/include/bits/wchar.h:
-
-/usr/include/gconv.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/4.1.2/include/stdarg.h:
+/usr/lib/gcc/x86_64-linux-gnu/4.4.3/include/stdarg.h:
 
 /usr/include/bits/stdio_lim.h:
 
@@ -75,11 +80,13 @@ include/vrlib.h:
 
 /usr/include/bits/stdio.h:
 
-/opt/local/FreeVR/merge/vr_system.h:
+/usr/include/bits/stdio2.h:
 
-/opt/local/FreeVR/merge/vr_context.h:
+/opt/local/include/FreeVR/vr_system.h:
 
-/opt/local/FreeVR/merge/vr_shmem.h:
+/opt/local/include/FreeVR/vr_context.h:
+
+/opt/local/include/FreeVR/vr_shmem.h:
 
 /usr/include/stdlib.h:
 
@@ -90,6 +97,8 @@ include/vrlib.h:
 /usr/include/endian.h:
 
 /usr/include/bits/endian.h:
+
+/usr/include/bits/byteswap.h:
 
 /usr/include/sys/select.h:
 
@@ -105,20 +114,22 @@ include/vrlib.h:
 
 /usr/include/alloca.h:
 
-/opt/local/FreeVR/merge/vr_enums.h:
+/usr/include/bits/stdlib.h:
 
-/opt/local/FreeVR/merge/vr_math.h:
+/opt/local/include/FreeVR/vr_enums.h:
 
-/opt/local/FreeVR/merge/vr_visren.h:
+/opt/local/include/FreeVR/vr_math.h:
 
-/opt/local/FreeVR/merge/vr_callback.h:
+/opt/local/include/FreeVR/vr_visren.h:
 
-/opt/local/FreeVR/merge/vr_procs.h:
+/opt/local/include/FreeVR/vr_callback.h:
 
-/opt/local/FreeVR/merge/vr_input.h:
+/opt/local/include/FreeVR/vr_procs.h:
 
-/opt/local/FreeVR/merge/vr_entity.h:
+/opt/local/include/FreeVR/vr_input.h:
 
-/opt/local/FreeVR/merge/vr_debug.h:
+/opt/local/include/FreeVR/vr_entity.h:
 
-/opt/local/FreeVR/merge/vr_utils.h:
+/opt/local/include/FreeVR/vr_debug.h:
+
+/opt/local/include/FreeVR/vr_utils.h:
